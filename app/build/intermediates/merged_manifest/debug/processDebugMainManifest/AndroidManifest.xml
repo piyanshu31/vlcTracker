@@ -8,9 +8,6 @@
         android:minSdkVersion="21"
         android:targetSdkVersion="34" />
 
-    <uses-permission android:name="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-
     <permission
         android:name="com.example.vlctracker.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -25,7 +22,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="VLC Tracker"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
         android:theme="@style/Theme.VlcTracker" >
+
+        <!-- Main activity -->
         <activity
             android:name="com.example.vlctracker.MainActivity"
             android:exported="true" >
@@ -36,9 +36,11 @@
             </intent-filter>
         </activity>
 
+        <!-- Service to listen for VLC notifications -->
         <service
             android:name="com.example.vlctracker.MediaListenerService"
             android:exported="true"
+            android:label="VLC Tracker Service"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE" >
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
