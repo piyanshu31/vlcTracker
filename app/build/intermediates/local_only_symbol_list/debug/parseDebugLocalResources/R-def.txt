@@ -3,7 +3,6 @@ local
 color purple_500
 color purple_700
 color teal_200
-id timeView
 layout activity_main
 mipmap ic_launcher
 mipmap ic_launcher_round

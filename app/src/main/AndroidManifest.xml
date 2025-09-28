@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.vlctracker">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Main Launcher Activity -->
     <application
         android:allowBackup="true"
+        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
-        android:label="VLC Tracker"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VlcTracker">
@@ -21,11 +20,9 @@
 
         <service
             android:name=".MediaListenerService"
-            android:label="VLC Tracker Service"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.service.notification.NotificationListenerService"/>
+                <action android:name="com.example.vlctracker.ACTION_LISTEN"/>
             </intent-filter>
         </service>
 
