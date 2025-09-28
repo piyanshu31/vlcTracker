@@ -3378,7 +3378,7 @@ int id textinput_placeholder 0x7f08019d
 int id textinput_prefix_text 0x7f08019e
 int id textinput_suffix_text 0x7f08019f
 int id time 0x7f0801a0
-int id timerTextView 0x7f0801a1
+int id timeView 0x7f0801a1
 int id title 0x7f0801a2
 int id titleDividerNoCustom 0x7f0801a3
 int id title_template 0x7f0801a4

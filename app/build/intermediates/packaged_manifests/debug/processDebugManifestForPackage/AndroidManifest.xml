@@ -24,8 +24,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VlcTracker" >
-
-        <!-- Main activity -->
         <activity
             android:name="com.example.vlctracker.MainActivity"
             android:exported="true" >
@@ -36,7 +34,6 @@
             </intent-filter>
         </activity>
 
-        <!-- Service to listen for VLC notifications -->
         <service
             android:name="com.example.vlctracker.MediaListenerService"
             android:exported="true"

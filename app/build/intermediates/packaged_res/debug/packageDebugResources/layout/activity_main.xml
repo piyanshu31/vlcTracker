@@ -6,10 +6,11 @@
               android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/timerTextView"
-        android:text="Listening time: 0 seconds"
-        android:textSize="24sp"
+        android:id="@+id/timeView"
+        android:text="Total VLC Listening Time: 00:00:00"
+        android:textSize="20sp"
+        android:padding="16dp"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
     </LinearLayout>
