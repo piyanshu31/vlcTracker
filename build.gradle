@@ -1,12 +1,11 @@
-// Top-level build file
-
+// Root build.gradle
 buildscript {
     repositories {
-        google()
+        google()        // <--- This is required for AGP
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.3.2'
+        classpath "com.android.tools.build:gradle:8.2.2" // Match SDK version
     }
 }
 

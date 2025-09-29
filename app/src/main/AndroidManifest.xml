@@ -1,13 +1,24 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.example.locklogger"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Main Launcher Activity -->
+    <!-- Needed for starting the service at boot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Foreground service permission (Android 9+/14+ best practice) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <!-- Optional service type declaration for newer Android (keeps it tidy) -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
+    <!-- On Android 13+, if you want to show the foreground notification reliably,
+    requesting POST_NOTIFICATIONS at runtime is recommended. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
-        android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="Lock Logger"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VlcTracker">
+        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
 
         <activity
             android:name=".MainActivity"
@@ -19,12 +30,29 @@
         </activity>
 
         <service
-            android:name=".MediaListenerService"
+            android:name=".LogService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.example.vlctracker.ACTION_LISTEN"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
-        </service>
+        </receiver>
 
-    </application>
-</manifest>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+            </provider>
+
+        </application>
+    </manifest>
